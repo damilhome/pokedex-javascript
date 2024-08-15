@@ -59,28 +59,46 @@ main {
     overflow: hidden;
 }
 
-.pokemonDetails h2:first-of-type, .pokemonDetails h2:last-of-type {
-    font-size: 1.2rem;
-    margin: 1.1rem 0;
-}
-
-.pokemonDetails span {
-    display: block;
-    margin: 1rem 0;
-    font-size: .9rem;
-}
-
-.pokemonDetails span p {
-    display: inline-block;
-}
-
 .pokemonDetails div {
     margin: 1rem 0;
     font-size: .9rem;
 }
 
-.pokemonDetails div p {
-    display: inline-block;
+.aboutContainer {
+    width: 73%;
+    padding-left: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.aboutContainer ol li {
+    list-style: none;
+    margin: 0.5rem 0;
+}
+
+.statsContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0.3rem;
+}
+
+.statsContainer ol li {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.statsContainer ol li span, .statsContainer ol li div {
+    margin: 0;
+}
+
+.statsContainer ol:last-of-type {
+    width: 65%;
+}
+
+.statsContainer ol:last-of-type li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .statsBar {
@@ -89,7 +107,12 @@ main {
     width: 150px;
     height: 5px;
     margin: 0;
-    
+}
+
+
+.pokemonDetails h2:first-of-type, .pokemonDetails h2:last-of-type {
+    font-size: 1.2rem;
+    margin: 1.1rem 0;
 }
 
 @media screen and (min-width: 992px) {
