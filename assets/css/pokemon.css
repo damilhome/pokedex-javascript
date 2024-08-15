@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    height: 100vh;
+    width: 100vw;
+    background-color: #77c850;
+    overflow: hidden;
+}
+
+.containerBackButton {
+    padding: 1rem 1rem 0 1rem;
+}
+
+.backButton {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.shortPokemonInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40%;
+    padding: 0 1rem;
+}
+
+.pokemonInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.types {
+    display: flex;
+    justify-content: space-between;
+}
+
+.type {
+    list-style: none;
+}
+
+.pokemonPhoto {
+    margin-bottom: -2rem;
+}
+
+.pokemonDetails {
+    width: 100%;
+    padding: 2rem 1.5rem;
+    background-color: #fff;
+    border-radius: 3rem 3rem 0 0;
+    overflow: hidden;
+}
+
+.pokemonDetails h2:first-of-type, .pokemonDetails h2:last-of-type {
+    font-size: 1.2rem;
+    margin: 1.1rem 0;
+}
+
+.pokemonDetails span {
+    display: block;
+    margin: 1rem 0;
+    font-size: .9rem;
+}
+
+.pokemonDetails span p {
+    display: inline-block;
+}
+
+.pokemonDetails div {
+    margin: 1rem 0;
+    font-size: .9rem;
+}
+
+.pokemonDetails div p {
+    display: inline-block;
+}
+
+.statsBar {
+    display: inline-block;
+    background-color: gray;
+    width: 150px;
+    height: 5px;
+    margin: 0;
+    
+}
+
+@media screen and (min-width: 992px) {
+    main {
+        max-width: 992px;
+        height: auto;
+        margin: 1rem auto;
+        border-radius: 1rem;
+    }
+}
