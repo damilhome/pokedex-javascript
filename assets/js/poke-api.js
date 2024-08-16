@@ -4,6 +4,23 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
     const pokemon = new Pokemon();
     pokemon.number = pokeDetail.id;
     pokemon.name = pokeDetail.name;
+    pokemon.height = pokeDetail.height;
+    pokemon.weight = pokeDetail.weight;
+    pokemon.abilities = function() {
+        let ability = [];
+        for (let i = 0; i < pokeDetail.abilities.length; i++) {
+            const element = pokeDetail.abilities[i];
+            ability.push(element.ability.name);
+        }
+
+        return ability.join(", ");
+    }
+    pokemon.hp = pokeDetail.stats[0].base_stat;
+    pokemon.attack = pokeDetail.stats[1].base_stat;
+    pokemon.defense = pokeDetail.stats[2].base_stat;
+    pokemon.sp_attack = pokeDetail.stats[3].base_stat;
+    pokemon.sp_defense = pokeDetail.stats[4].base_stat;
+    pokemon.speed = pokeDetail.stats[5].base_stat;
 
     const types = pokeDetail.types.map((typeSlot) => typeSlot.type.name);
     const [type] = types

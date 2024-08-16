@@ -58,6 +58,11 @@
     background-color: #f9aec7;
 }
 
+.cardButton {
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .pokemon {
     display: flex;
     flex-direction: column;
