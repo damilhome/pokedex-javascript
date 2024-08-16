@@ -1,3 +1,4 @@
+/* import { pokemonsToUse, clickedPokemon } from './main.js'; */
 const containerTest = document.getElementById('containerTest');
 
 function convertPokemonToDetailPage() {
@@ -82,13 +83,14 @@ function convertPokemonToDetailPage() {
         `
 }
 
-function addHtmlDetailPage(elemento) {
-    /* const idElemento = elemento.id;
-    let tempPokemon = {};
-    for (let i = 0; i < pokemonsToUse.length; i++) {
-        const element = pokemonsToUse[i].number;
-        if (idElemento === element) {
-            tempPokemon = pokemonsToUse[i];
+function addHtmlDetailPage() {
+    /* const ClickedPokemonId = clickedPokemon.id;
+    let tempPokemon = null;
+
+    const pokemonsForDetails = pokemonsToUse;
+    for (let i = 0; i < pokemonsForDetails.length; i++) {
+        if (ClickedPokemonId === pokemonsForDetails[i].name) {
+            tempPokemon = pokemonsForDetails[i];
         }
     } */
     containerTest.innerHTML = convertPokemonToDetailPage();

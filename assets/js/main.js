@@ -1,6 +1,7 @@
 const pokemonList = document.getElementById('pokemonList');
 const loadMoreButton = document.getElementById('loadMoreButton');
-let pokemonsToUse = [];
+export let pokemonsToUse = [];
+export let clickedPokemon = '';
 
 const maxRecords = 151;
 const limit = 10;
@@ -8,7 +9,7 @@ let offset = 0;
 
 function convertPokemonToLi(pokemon) {
     return `
-        <a id="${pokemon.name}" class="cardButton" href="details.html" onclick="addHtmlDetailPage(this)">
+        <a id="${pokemon.name}" class="cardButton" href="details.html" onclick="getClickedPokemon(this)">
             <li id="${pokemon.number}" class="pokemon ${pokemon.type}">
                 <span class="number">#${pokemon.number}</span>
                 <span class="name">${pokemon.name}</span>
@@ -24,6 +25,10 @@ function convertPokemonToLi(pokemon) {
     `
 }
 
+function getClickedPokemon(elemento) {
+    clickedPokemon = elemento;
+}
+
 function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons) => {
         pokemonList.innerHTML += pokemons.map(convertPokemonToLi).join('');
@@ -33,7 +38,7 @@ function loadPokemonItens(offset, limit) {
 
 loadPokemonItens(offset, limit);
 
-loadMoreButton.addEventListener('click', () => {
+function loadMoreButtonFunction() {
     offset+= limit;
 
     const qtdRecordNextPage = offset + limit;
@@ -46,10 +51,13 @@ loadMoreButton.addEventListener('click', () => {
         loadPokemonItens(offset, limit);
     }
 
-})
+}
 
+window.loadMoreButtonFunction = loadMoreButtonFunction;
 
-/* 
-document.getElementById('bulbasaur').addEventListener('click', () => {
-    mainContainer.innerHTML = convertPokemonToDetailPage();
-}) */
+/* export function getPokemonsToUse() {
+    return pokemonsToUse;
+}
+export function getClickedPokemons() {
+    return clickedPokemon;
+} */
