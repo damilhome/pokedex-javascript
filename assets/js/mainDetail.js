@@ -1,7 +1,7 @@
 /* import {getClickedPokemon} from './get-pokemon.js'; */
 const elemento = localStorage.getItem('elemento');
 const pokemonsOnTheScreen = JSON.parse(localStorage.getItem('pokemonsOnTheScreen'));
-const containerTest = document.getElementById('containerTest');
+const mainContainer = document.getElementById('mainContainer');
 
 function convertPokemonToDetailPage(pokemon) {
     return `
@@ -96,7 +96,7 @@ function addHtmlDetailPage() {
     }
     console.log(elemento);
     console.log(pokemonsOnTheScreen)
-    containerTest.innerHTML = convertPokemonToDetailPage(tempPokemon);
+    mainContainer.innerHTML += convertPokemonToDetailPage(tempPokemon);
 }
 
 /* function getClickedPokemon(elemento) {
