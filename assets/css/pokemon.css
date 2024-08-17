@@ -185,7 +185,7 @@ main {
 }
 
 .statsPorcentage {
-    width: 53%;
+    max-width: 100%;
     height: 5px;
     margin: 0;
 }
