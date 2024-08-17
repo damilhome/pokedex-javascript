@@ -1,7 +1,6 @@
 const pokemonList = document.getElementById('pokemonList');
 const loadMoreButton = document.getElementById('loadMoreButton');
-export let pokemonsToUse = [];
-export let clickedPokemon = '';
+let pokemonsOnTheScreen = [];
 
 const maxRecords = 151;
 const limit = 10;
@@ -26,19 +25,21 @@ function convertPokemonToLi(pokemon) {
 }
 
 function getClickedPokemon(elemento) {
-    clickedPokemon = elemento;
+    /* console.log(pokemonsOnTheScreen); */
+    localStorage.setItem('elemento', elemento.id);
+    localStorage.setItem('pokemonsOnTheScreen', JSON.stringify(pokemonsOnTheScreen));
 }
 
 function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons) => {
         pokemonList.innerHTML += pokemons.map(convertPokemonToLi).join('');
-        pokemonsToUse = pokemons;
+        pokemonsOnTheScreen.push(...pokemons);
     })
 }
 
 loadPokemonItens(offset, limit);
 
-function loadMoreButtonFunction() {
+loadMoreButton.addEventListener('click', () => {
     offset+= limit;
 
     const qtdRecordNextPage = offset + limit;
@@ -51,13 +52,12 @@ function loadMoreButtonFunction() {
         loadPokemonItens(offset, limit);
     }
 
-}
+})
 
-window.loadMoreButtonFunction = loadMoreButtonFunction;
+window.getClickedPokemon = getClickedPokemon;
 
-/* export function getPokemonsToUse() {
-    return pokemonsToUse;
-}
-export function getClickedPokemons() {
-    return clickedPokemon;
+/* details.html code */
+
+/* function getClickedPokemon(elemento) {
+    console.log(elemento);
 } */

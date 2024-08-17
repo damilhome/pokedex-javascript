@@ -1,20 +1,21 @@
-/* import { pokemonsToUse, clickedPokemon } from './main.js'; */
+/* import {getClickedPokemon} from './get-pokemon.js'; */
+const elemento = localStorage.getItem('elemento');
+const pokemonsOnTheScreen = JSON.parse(localStorage.getItem('pokemonsOnTheScreen'));
 const containerTest = document.getElementById('containerTest');
 
-function convertPokemonToDetailPage() {
+function convertPokemonToDetailPage(pokemon) {
     return `
             <section class="shortPokemonInfo">
                 <div class="pokemonInfo">
                     <div class="details">
-                        <h1>Bulbasaur</h1>
+                        <h1 class="capitalize">${pokemon.name}</h1>
                         <ol class="types">
-                            <li class="type">Grass</li>
-                            <li class="type">Poison</li>
+                            ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
                         </ol>
                     </div>
-                    <span class="number">#1</span>
+                    <span class="number">#${pokemon.number}</span>
                 </div>
-                <img class="pokemonPhoto" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="pokemon image">
+                <img class="pokemonPhoto" src="${pokemon.photo}" alt="${pokemon.name}">
             </section>
             <section class="pokemonDetails">
                 <div class="aboutHolder">
@@ -27,10 +28,10 @@ function convertPokemonToDetailPage() {
                             <li>Abilities</li>
                         </ol>
                         <ol>
-                            <li>Bulbasaur</li>
-                            <li>0.70 cm</li>
-                            <li>6.9kg</li>
-                            <li>Overgrow, Chlorophyl</li>
+                            <li class="capitalize">${pokemon.name}</li>
+                            <li>${pokemon.height / 10} m</li>
+                            <li>${pokemon.weight / 10} kg</li>
+                            <li class="capitalize">${pokemon.abilities}</li>
                         </ol>
                     </div>
                 </div>
@@ -49,31 +50,31 @@ function convertPokemonToDetailPage() {
                         </ol>
                         <ol>
                             <li>
-                                <span>45</span>
+                                <span>${pokemon.hp}</span>
                                 <div class="statsBar"><div class="statsPorcentage psychic"></div></div>
                             </li>
                             <li>
-                                <span>49</span>
+                                <span>${pokemon.attack}</span>
                                 <div class="statsBar"><div class="statsPorcentage grass"></div></div>
                             </li>
                             <li>
-                                <span>49</span>
+                                <span>${pokemon.defense}</span>
                                 <div class="statsBar"><div class="statsPorcentage psychic"></div></div>
                             </li>
                             <li>
-                                <span>65</span>
+                                <span>${pokemon.sp_attack}</span>
                                 <div class="statsBar"><div class="statsPorcentage grass"></div></div>
                             </li>
                             <li>
-                                <span>65</span>
+                                <span>${pokemon.sp_defense}</span>
                                 <div class="statsBar"><div class="statsPorcentage grass"></div></div>
                             </li>
                             <li>
-                                <span>45</span>
+                                <span>${pokemon.speed}</span>
                                 <div class="statsBar"><div class="statsPorcentage psychic"></div></div>
                             </li>
                             <li>
-                                <span>318</span>
+                                <span>${pokemon.hp + pokemon.attack + pokemon.defense + pokemon.sp_attack + pokemon.sp_defense + pokemon.speed}</span>
                                 <div class="statsBar"><div class="statsPorcentage psychic"></div></div>
                             </li>
                         </ol>
@@ -84,16 +85,22 @@ function convertPokemonToDetailPage() {
 }
 
 function addHtmlDetailPage() {
-    /* const ClickedPokemonId = clickedPokemon.id;
+    /* const element = getClickedPokemon();
+    console.log(element); */
     let tempPokemon = null;
-
-    const pokemonsForDetails = pokemonsToUse;
-    for (let i = 0; i < pokemonsForDetails.length; i++) {
-        if (ClickedPokemonId === pokemonsForDetails[i].name) {
-            tempPokemon = pokemonsForDetails[i];
+    for (let i = 0; i < pokemonsOnTheScreen.length; i++) {
+        const element = pokemonsOnTheScreen[i].name;
+        if(element === elemento) {
+            tempPokemon = pokemonsOnTheScreen[i];
         }
-    } */
-    containerTest.innerHTML = convertPokemonToDetailPage();
+    }
+    console.log(elemento);
+    console.log(pokemonsOnTheScreen)
+    containerTest.innerHTML = convertPokemonToDetailPage(tempPokemon);
 }
+
+/* function getClickedPokemon(elemento) {
+    console.log(elemento);
+} */
 
 window.onload = addHtmlDetailPage();

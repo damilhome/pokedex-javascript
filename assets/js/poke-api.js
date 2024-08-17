@@ -2,11 +2,8 @@ const pokeApi = {}
 
 function convertPokeApiDetailToPokemon(pokeDetail) {
     const pokemon = new Pokemon();
-    pokemon.number = pokeDetail.id;
-    pokemon.name = pokeDetail.name;
-    pokemon.height = pokeDetail.height;
-    pokemon.weight = pokeDetail.weight;
-    pokemon.abilities = function() {
+    
+    function getAbilities() {
         let ability = [];
         for (let i = 0; i < pokeDetail.abilities.length; i++) {
             const element = pokeDetail.abilities[i];
@@ -15,6 +12,12 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
 
         return ability.join(", ");
     }
+
+    pokemon.number = pokeDetail.id;
+    pokemon.name = pokeDetail.name;
+    pokemon.height = pokeDetail.height;
+    pokemon.weight = pokeDetail.weight;
+    pokemon.abilities = getAbilities();
     pokemon.hp = pokeDetail.stats[0].base_stat;
     pokemon.attack = pokeDetail.stats[1].base_stat;
     pokemon.defense = pokeDetail.stats[2].base_stat;
