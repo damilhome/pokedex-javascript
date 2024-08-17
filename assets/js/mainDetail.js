@@ -51,31 +51,31 @@ function convertPokemonToDetailPage(pokemon) {
                         <ol>
                             <li>
                                 <span>${pokemon.hp}</span>
-                                <div class="statsBar"><div class="statsPorcentage psychic"></div></div>
+                                <div class="statsBar"><div id="hpPorcentage" class="statsPorcentage psychic"></div></div>
                             </li>
                             <li>
                                 <span>${pokemon.attack}</span>
-                                <div class="statsBar"><div class="statsPorcentage grass"></div></div>
+                                <div class="statsBar"><div id="attackPorcentage" class="statsPorcentage grass"></div></div>
                             </li>
                             <li>
                                 <span>${pokemon.defense}</span>
-                                <div class="statsBar"><div class="statsPorcentage psychic"></div></div>
+                                <div class="statsBar"><div id="defensePorcentage" class="statsPorcentage psychic"></div></div>
                             </li>
                             <li>
                                 <span>${pokemon.sp_attack}</span>
-                                <div class="statsBar"><div class="statsPorcentage grass"></div></div>
+                                <div class="statsBar"><div id="spAttackPorcentage" class="statsPorcentage grass"></div></div>
                             </li>
                             <li>
                                 <span>${pokemon.sp_defense}</span>
-                                <div class="statsBar"><div class="statsPorcentage grass"></div></div>
+                                <div class="statsBar"><div id="spDefensePorcentage" class="statsPorcentage grass"></div></div>
                             </li>
                             <li>
                                 <span>${pokemon.speed}</span>
-                                <div class="statsBar"><div class="statsPorcentage psychic"></div></div>
+                                <div class="statsBar"><div id="speedPorcentage" class="statsPorcentage psychic"></div></div>
                             </li>
                             <li>
                                 <span>${pokemon.hp + pokemon.attack + pokemon.defense + pokemon.sp_attack + pokemon.sp_defense + pokemon.speed}</span>
-                                <div class="statsBar"><div class="statsPorcentage psychic"></div></div>
+                                <div  class="statsBar"><div id="totalPorcentage" class="statsPorcentage psychic"></div></div>
                             </li>
                         </ol>
                     </div>
@@ -96,7 +96,15 @@ function addHtmlDetailPage() {
     }
     console.log(elemento);
     console.log(pokemonsOnTheScreen)
+    let totalPorcentage = (tempPokemon.hp + tempPokemon.attack + tempPokemon.defense + tempPokemon.sp_attack + tempPokemon.sp_defense + tempPokemon.speed) / 6;
     mainContainer.innerHTML += convertPokemonToDetailPage(tempPokemon);
+    document.getElementById('hpPorcentage').style.width = `${tempPokemon.hp}%`;
+    document.getElementById('attackPorcentage').style.width = `${tempPokemon.attack}%`;
+    document.getElementById('defensePorcentage').style.width = `${tempPokemon.defense}%`;
+    document.getElementById('spAttackPorcentage').style.width = `${tempPokemon.sp_attack}%`;
+    document.getElementById('spDefensePorcentage').style.width = `${tempPokemon.sp_defense}%`;
+    document.getElementById('speedPorcentage').style.width = `${tempPokemon.speed}%`;
+    document.getElementById('totalPorcentage').style.width = `${totalPorcentage}%`;
 }
 
 /* function getClickedPokemon(elemento) {
